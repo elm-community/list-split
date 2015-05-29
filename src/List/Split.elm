@@ -10,7 +10,7 @@ import List exposing (..)
 
 {-| Split list into smaller lists of length `k`, starting from the left.
 
-    chunksOfLeft 3 [1,2,3,4,5,6,7,8] = [[1,2,3],[4,5,6],[7,8]]
+    chunksOfLeft 3 [1,2,3,4,5,6,7,8] == [[1,2,3],[4,5,6],[7,8]]
 -}
 chunksOfLeft : Int -> List a -> List (List a)
 chunksOfLeft k xs =
@@ -21,7 +21,7 @@ chunksOfLeft k xs =
 
 {-| Split list into smaller lists of length `k`, starting from the right.
 
-    chunksOfRight 3 [1,2,3,4,5,6,7,8] = [[1,2], [3,4,5], [6,7,8]]
+    chunksOfRight 3 [1,2,3,4,5,6,7,8] == [[1,2], [3,4,5], [6,7,8]]
 -}
 chunksOfRight : Int -> List a -> List (List a)
 chunksOfRight k = map reverse << chunksOfLeft k << reverse
