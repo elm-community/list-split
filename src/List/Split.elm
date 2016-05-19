@@ -1,4 +1,5 @@
-module List.Split where
+module List.Split exposing (..)
+
 {-| Split lists into chunks
 
 # Splitters
@@ -8,20 +9,31 @@ module List.Split where
 
 import List exposing (..)
 
+
 {-| Split list into smaller lists of length `k`, starting from the left.
 
+    chunksOfLeft 3 [1..9] == [[1,2,3],[4,5,6],[7,8,9]]
     chunksOfLeft 3 [1,2,3,4,5,6,7,8] == [[1,2,3],[4,5,6],[7,8]]
+    chunksOfLeft 3 [] == [[]]
 -}
 chunksOfLeft : Int -> List a -> List (List a)
 chunksOfLeft k xs =
-  let len = length xs
-  in  if len > k
-      then take k xs :: chunksOfLeft k (drop k xs)
-      else [xs]
+    let
+        len =
+            length xs
+    in
+        if len > k then
+            take k xs :: chunksOfLeft k (drop k xs)
+        else
+            [ xs ]
+
 
 {-| Split list into smaller lists of length `k`, starting from the right.
 
+    chunksOfRight 3 [1..9] == [[1,2,3],[4,5,6],[7,8,9]]
     chunksOfRight 3 [1,2,3,4,5,6,7,8] == [[1,2], [3,4,5], [6,7,8]]
+    chunksOfRight 3 [] == [[]]
 -}
 chunksOfRight : Int -> List a -> List (List a)
-chunksOfRight k = map reverse << chunksOfLeft k << reverse
+chunksOfRight k =
+    map reverse << chunksOfLeft k << reverse
