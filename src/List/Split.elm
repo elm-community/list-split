@@ -32,8 +32,8 @@ chunksOfLeft k xs =
 
 {-| Split list into smaller lists of length `k`, starting from the right.
 
-    chunksOfRight  3 [1..9] == [[1,2,3],[4,5,6],[7,8,9]]
-    chunksOfRight  3 [1,2,3,4,5,6,7,8] == [[1,2], [3,4,5], [6,7,8]]
+    chunksOfRight  3 [1..9] == [[7,8,9],[4,5,6],[1,2,3]]
+    chunksOfRight  3 [1,2,3,4,5,6,7,8] == [[6,7,8],[3,4,5],[1,2]]
     chunksOfRight  3 [] == [[]]
     chunksOfRight  0 xs == [[]]
     chunksOfRight -1 xs == []
